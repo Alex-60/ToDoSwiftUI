@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var task: String
+    @State var taskManager = TaskManager()
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        AddTaskView(taskToSave: task, managerTask: $taskManager)
+        ListTasksView(managerTask: $taskManager)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(task: "")
     }
 }
