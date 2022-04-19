@@ -18,10 +18,8 @@ struct TaskManager {
     @discardableResult
     mutating func addTask(withName taskName: String) -> Tasks {
         let newTask = Tasks(taskName: taskName)
-        print("taskList : \(taskList)")
         taskList.append(newTask)
         storage.addNewTask(task: newTask)
-        print("taskList : \(taskList)")
         return newTask
     }
 
@@ -29,7 +27,6 @@ struct TaskManager {
         if let indexTask = taskList.firstIndex(where: { (t) -> Bool in t.id == task.id }) {
             taskList[indexTask].isDone.toggle()
             storage.updateask(task: taskList[indexTask])
-            print("taskList : \(taskList)")
         }
     }
 
